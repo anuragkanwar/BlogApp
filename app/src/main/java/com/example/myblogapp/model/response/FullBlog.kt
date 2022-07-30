@@ -1,6 +1,7 @@
 package com.example.myblogapp.model.response
 
 data class FullBlog(
+    val authorName: String,
     val bookmarked: Boolean,
     val category: String,
     val comments: List<Comment>,

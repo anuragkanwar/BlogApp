@@ -11,6 +11,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.outlined.ArrowRight
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,6 +28,7 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Scale
 import coil.size.Size
+import com.example.myblogapp.navigation.BlogScreens
 
 @Composable
 fun ProfileScreen(
@@ -52,7 +54,9 @@ fun ProfileScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
-            .padding(16.dp)
+            .padding(top = 30.dp, start = 16.dp, end = 16.dp, bottom = 16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.height(12.dp))
         Card(
@@ -69,6 +73,7 @@ fun ProfileScreen(
             )
         }
 
+        Spacer(modifier = Modifier.height(12.dp))
         Text(
             text = name,
             color = Color.Black,
@@ -92,7 +97,7 @@ fun ProfileScreen(
         }
 
         ProfileItem(icon = Icons.Default.Create, text = "New Blog") {
-
+            navController.navigate(BlogScreens.AddEditBlogScreen.name)
         }
 
         Text(
@@ -116,8 +121,8 @@ fun ProfileItem(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(12.dp)
-            .background(Color.LightGray.copy(0.5f), RoundedCornerShape(10.dp))
+            .padding(16.dp)
+            .background(Color.LightGray.copy(0.2f), RoundedCornerShape(10.dp))
             .clickable {
                 onClick()
             },
@@ -134,13 +139,13 @@ fun ProfileItem(
         Text(
             text = text,
             color = Color.Black,
-            fontSize = 20.sp,
+            fontSize = 22.sp,
             fontWeight = FontWeight.Medium,
             modifier = Modifier.padding(10.dp)
         )
 
         Icon(
-            imageVector = Icons.Default.ArrowRight,
+            imageVector = Icons.Outlined.ArrowRight,
             contentDescription = text,
             tint = Color.Black,
             modifier = Modifier.padding(10.dp)

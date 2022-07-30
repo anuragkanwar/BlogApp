@@ -31,14 +31,18 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import java.util.*
 import androidx.compose.foundation.*
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.outlined.Visibility
 import androidx.compose.material.icons.outlined.VisibilityOff
-import androidx.compose.material.icons.rounded.Edit
-import androidx.compose.material.icons.rounded.MoreVert
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.focus.FocusState
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import com.example.myblogapp.model.response.MinBlog
@@ -111,7 +115,9 @@ private fun getMonthFull(
 
 @Composable
 fun DateContent(
-    date: Date = Date(System.currentTimeMillis())
+    date: Date,
+    color: Color = Color.White,
+    size: Int = 18
 ) {
     val blogDay = date.toString().split(' ')[0]
     val blogMonth = date.toString().split(' ')[1].lowercase()
@@ -124,8 +130,8 @@ fun DateContent(
 
     Text(
         text = displayDate,
-        color = Color.White,
-        fontSize = 18.sp,
+        color = color,
+        fontSize = size.sp,
         modifier = Modifier.padding(end = 8.dp)
     )
 }
@@ -152,6 +158,7 @@ fun BlogCard(
         modifier = Modifier
             .fillMaxWidth()
             .height(250.dp)
+            .padding(8.dp)
             .clickable {
                 //pass blogId
                 onClick(blog.id)
@@ -192,7 +199,8 @@ fun BlogCard(
                     .padding(8.dp),
             ) {
                 DateContent(
-                    date = Date(blog.publishedAt)
+                    date = Date(blog.publishedAt),
+                    color = Color.White
                 )
             }
 
@@ -255,6 +263,7 @@ fun MyButton(
     }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun TransparentHintTextField(
     text: String,
@@ -269,6 +278,8 @@ fun TransparentHintTextField(
     isPasswordField: Boolean = false,
     isPasswordVisible: Boolean = true
 ) {
+    val keyboardController = LocalSoftwareKeyboardController.current
+
     Box(
         modifier = modifier.fillMaxWidth(),
     ) {
@@ -284,7 +295,15 @@ fun TransparentHintTextField(
                 .padding(16.dp)
                 .onFocusChanged {
                     onFocusChange(it)
-                }
+                },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Done
+            ),
+            keyboardActions = KeyboardActions(onDone =
+            {
+                keyboardController?.hide()
+            })
         )
         if (isHintVisible) {
             Text(
@@ -310,9 +329,10 @@ fun TransparentHintTextField(
                     Icon(
                         imageVector = image,
                         description,
-                        tint = MaterialTheme.colors.onBackground,
+                        tint = Color.Black,
                         modifier = Modifier
                             .align(Alignment.Center)
+                            .padding(end = 8.dp)
                     )
                 }
             }

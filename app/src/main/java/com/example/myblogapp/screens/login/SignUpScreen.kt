@@ -32,6 +32,7 @@ import com.example.myblogapp.components.LottieComponent
 import com.example.myblogapp.components.MyButton
 import com.example.myblogapp.components.TransparentHintTextField
 import com.example.myblogapp.navigation.BlogScreens
+import com.example.myblogapp.utils.AppColors
 import kotlinx.coroutines.flow.collectLatest
 import java.util.regex.Pattern
 
@@ -94,6 +95,7 @@ fun SignUpScreen(
                 .fillMaxSize()
                 .background(Color.White)
                 .padding(it)
+                .padding(top = 35.dp,start = 8.dp,end = 8.dp,bottom = 8.dp)
                 .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.Top
         ) {
@@ -101,7 +103,7 @@ fun SignUpScreen(
             Row(
                 modifier = Modifier
                     .padding(top = 16.dp, start = 16.dp)
-                    .background(Color.Black, RoundedCornerShape(18.dp))
+                    .background(AppColors.black, RoundedCornerShape(18.dp))
                     .clickable {
                         navController.navigateUp()
                     },
@@ -126,7 +128,7 @@ fun SignUpScreen(
             Text(
                 text = "Let's get started!",
                 fontSize = 28.sp,
-                color = Color.Black,
+                color = AppColors.black,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 5.dp)
             )
@@ -162,7 +164,7 @@ fun SignUpScreen(
                 textStyle = TextStyle(
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp,
-                    color = Color.Black
+                    color = AppColors.black
                 )
             )
             Divider(
@@ -197,7 +199,7 @@ fun SignUpScreen(
                 textStyle = TextStyle(
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp,
-                    color = Color.Black
+                    color = AppColors.black
                 )
             )
             Divider(
@@ -240,7 +242,7 @@ fun SignUpScreen(
                 textStyle = TextStyle(
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp,
-                    color = Color.Black
+                    color = AppColors.black
                 )
             )
             Divider(
@@ -279,7 +281,7 @@ fun SignUpScreen(
                     buildAnnotatedString {
                         withStyle(
                             style = SpanStyle(
-                                color = Color.Black,
+                                color = AppColors.black,
                                 fontSize = 20.sp,
                             )
                         ) {
@@ -287,7 +289,7 @@ fun SignUpScreen(
                         }
                         withStyle(
                             style = SpanStyle(
-                                color = Color.Black,
+                                color = AppColors.black,
                                 fontSize = 20.sp,
                                 fontWeight = FontWeight.Bold
                             )
@@ -313,16 +315,6 @@ fun SignUpScreen(
             }
         }
 
-    }
-}
-
-@Composable
-fun LoadingIndicator() {
-    Box(
-        modifier = Modifier.fillMaxWidth(),
-        contentAlignment = Alignment.Center
-    ) {
-        LottieComponent(asset = "splashcamera.json", speed = 1.5f)
     }
 }
 

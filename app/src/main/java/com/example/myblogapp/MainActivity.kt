@@ -48,7 +48,7 @@ fun MyApp(
         Surface(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 14.dp),
+                .padding(top = 24.dp),
             color = MaterialTheme.colors.background
         ) {
             BlogNavigation()

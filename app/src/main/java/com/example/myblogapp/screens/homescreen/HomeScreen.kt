@@ -74,6 +74,7 @@ fun HomeScreen(
 
     Column(
         modifier = Modifier.fillMaxSize()
+            .padding(top = 25.dp,start = 8.dp,end = 8.dp,bottom = 8.dp)
     ) {
         Row(
             modifier = Modifier

@@ -10,6 +10,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.myblogapp.screens.blog.BlogScreen
 import com.example.myblogapp.screens.blog.BlogScreenViewModel
+import com.example.myblogapp.screens.blogAddEditScreen.BlogAddEditScreen
+import com.example.myblogapp.screens.blogAddEditScreen.BlogAddEditViewModel
 import com.example.myblogapp.screens.commentScreen.CommentScreen
 import com.example.myblogapp.screens.commentScreen.CommentScreenViewModel
 import com.example.myblogapp.screens.entryScreen.EntryScreen
@@ -80,6 +82,11 @@ fun BlogNavigation() {
         composable(route = BlogScreens.ProfileScreen.name){
             val viewModel: ProfileScreenViewModel = hiltViewModel()
             ProfileScreen(navController = navController, viewModel = viewModel)
+        }
+
+        composable(route = BlogScreens.AddEditBlogScreen.name){
+            val viewModel : BlogAddEditViewModel = hiltViewModel()
+            BlogAddEditScreen(navController = navController, viewModel = viewModel)
         }
 
     }

@@ -1,5 +1,6 @@
 package com.example.myblogapp.screens.commentScreen
 
+import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -11,6 +12,7 @@ import com.example.myblogapp.model.response.CommentWithUser
 import com.example.myblogapp.repository.BlogRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
 import javax.inject.Inject
 
 @HiltViewModel
@@ -28,11 +30,11 @@ class CommentScreenViewModel @Inject constructor(
         getAllComments(id)
     }
 
-
     fun getAllComments(blogId: Int) {
         isLoading.value = true
         viewModelScope.launch {
             val result = repository.getAllComments(blogId)
+            Log.d("TAG","Comments : ${result.data}")
             if (result.data == null) {
                 loadError.value = result.e.toString()
                 isLoading.value = false

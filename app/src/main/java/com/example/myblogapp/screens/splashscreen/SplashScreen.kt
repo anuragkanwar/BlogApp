@@ -6,6 +6,7 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -31,7 +32,6 @@ fun SplashScreen(navController: NavController, viewModel: SplashScreenViewModel)
     }
 
 
-
     LaunchedEffect(key1 = true, block = {
         scale.animateTo(
             targetValue = 0.9f,
@@ -52,7 +52,7 @@ fun SplashScreen(navController: NavController, viewModel: SplashScreenViewModel)
                 launchSingleTop = true
             }
         } else {
-            navController.navigate(BlogScreens.SignUpScreen.name) {
+            navController.navigate(BlogScreens.EntryScreen.name) {
                 popUpTo(navController.graph.findStartDestination().id)
                 launchSingleTop = true
             }
@@ -69,7 +69,8 @@ fun SplashScreen(navController: NavController, viewModel: SplashScreenViewModel)
         color = MaterialTheme.colors.background
     ) {
         Column(
-            modifier = Modifier.padding(4.dp),
+            modifier = Modifier.fillMaxSize()
+                .padding(4.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {

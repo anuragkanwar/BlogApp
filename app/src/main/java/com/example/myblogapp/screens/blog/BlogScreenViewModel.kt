@@ -21,18 +21,22 @@ class BlogScreenViewModel @Inject constructor(
     var blog = mutableStateOf<FullBlog?>(null)
 
     init {
-        isLoading.value = true
         savedStateHandle.get<Int>("id")?.let { blogId ->
-            viewModelScope.launch {
-                val result = repository.getSingleBlogs(blogId.toString())
-                if (result.data == null) {
-                    loadError.value = result.e.toString()
-                    isLoading.value = false
-                } else {
-                    blog.value = result.data
-                    isLoading.value = false
-                    loadError.value = ""
-                }
+            getBlog(blogId)
+        }
+    }
+
+    fun getBlog(blogId: Int?) {
+        isLoading.value = true
+        viewModelScope.launch {
+            val result = repository.getSingleBlogs(blogId.toString())
+            if (result.data == null) {
+                loadError.value = result.e.toString()
+                isLoading.value = false
+            } else {
+                blog.value = result.data
+                isLoading.value = false
+                loadError.value = ""
             }
         }
     }
