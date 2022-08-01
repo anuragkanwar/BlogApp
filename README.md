@@ -10,7 +10,7 @@ This is an Blog app which can let any user to read , write and upload blog. User
 <p align="center">
       <img alt="Image" src="https://raw.githubusercontent.com/anuragkanwar/BlogApp/master/GitAssests/001%20(9).jpg" width="25%" height="33%">
 &nbsp; &nbsp; &nbsp; &nbsp;
-      <img alt="Image" src="https://raw.githubusercontent.com/anuragkanwar/BlogApp/master/GitAssests/001%20(1).jpg" width="24%" height="33%">
+      <img alt="Image" src="https://raw.githubusercontent.com/anuragkanwar/BlogApp/master/GitAssests/001%20(1).jpg" width="25%" height="33%">
 &nbsp; &nbsp; &nbsp; &nbsp;
       <img alt="Image" src="https://raw.githubusercontent.com/anuragkanwar/BlogApp/master/GitAssests/001%20(2).jpg" width="25%" height="33%">
   </p>
