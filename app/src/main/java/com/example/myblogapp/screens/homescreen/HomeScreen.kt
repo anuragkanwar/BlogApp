@@ -64,17 +64,23 @@ fun HomeScreen(
         mutableStateOf(false)
     }
 
+    var image by remember {
+        mutableStateOf("")
+    }
+
     LaunchedEffect(isRefreshing) {
         if (isRefreshing) {
             delay(3000)
             isRefreshing = false
         }
+        image = viewModel.getUserImage()
     }
 
 
     Column(
-        modifier = Modifier.fillMaxSize()
-            .padding(top = 25.dp,start = 8.dp,end = 8.dp,bottom = 8.dp)
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 25.dp, start = 8.dp, end = 8.dp, bottom = 8.dp)
     ) {
         Row(
             modifier = Modifier
@@ -83,7 +89,7 @@ fun HomeScreen(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(text = "Feed", style = MaterialTheme.typography.h3)
-            myCard(viewModel = viewModel) {
+            myCard(viewModel = viewModel, image) {
                 navController.navigate(BlogScreens.ProfileScreen.name)
             }
         }
@@ -151,6 +157,7 @@ fun ErrorRetryIndicator(
 @Composable
 fun myCard(
     viewModel: HomeScreenViewModel,
+    image : String,
     onClick: () -> Unit
 ) {
     Card(
@@ -164,25 +171,15 @@ fun myCard(
         backgroundColor = MaterialTheme.colors.background,
         elevation = 2.dp
     ) {
-        ImageComposable(viewModel = viewModel)
+        ImageComposable(viewModel = viewModel, image = image)
     }
 }
 
 @Composable
 fun ImageComposable(
-    viewModel: HomeScreenViewModel
+    viewModel: HomeScreenViewModel,
+    image :  String
 ) {
-
-    var image = ""
-    LaunchedEffect(true) {
-        image = viewModel.getImage()
-    }
-
-    if (image.isEmpty()) {
-        image = "https://robohash.org/cdcd.jpg?set=set4"
-    }
-
-
     val painter = rememberAsyncImagePainter(
         model = ImageRequest.Builder(LocalContext.current)
             .data(image)

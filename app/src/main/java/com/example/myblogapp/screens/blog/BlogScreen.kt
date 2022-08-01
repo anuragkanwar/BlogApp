@@ -8,9 +8,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CameraEnhance
-import androidx.compose.material.icons.filled.Comment
-import androidx.compose.material.icons.filled.Healing
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.Bookmark
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.*
@@ -21,6 +19,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -96,7 +95,7 @@ fun ImageParallaxScroll(
 ) {
     val scrollState = rememberScrollState()
 
-    val image = "https://cdn.wallpapersafari.com/35/77/17pYHc.jpg"
+    val image = blog!!.imgUrl
 
     val painter = rememberAsyncImagePainter(
         model = ImageRequest.Builder(LocalContext.current)
@@ -171,15 +170,22 @@ fun ImageParallaxScroll(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                ){
+                    Icon(
+                        imageVector = Icons.Default.Favorite,
+                        contentDescription = "Icon",
+                        tint = Color.White
+                    )
+                    Text(text = blog.likes.toString(), modifier = Modifier.padding(4.dp), color = Color.White)
+                }
+
                 Icon(
-                    imageVector = Icons.Default.Healing,
+                    imageVector = Icons.Default.SwipeDownAlt,
                     contentDescription = "Icon",
-                    tint = Color.White
-                )
-                Text(
-                    "SCROLL DOWN", style = MaterialTheme.typography.caption.copy(
-                        fontWeight = FontWeight.Bold
-                    ), color = Color.White
+                    tint = Color.White,
+                    modifier = Modifier.offset(x = (-22).dp)
                 )
                 Icon(
                     imageVector = Icons.Outlined.Bookmark,
@@ -191,7 +197,7 @@ fun ImageParallaxScroll(
         Text(
             text = blog!!.title,
             style = TextStyle(
-                fontSize = 24.sp,
+                fontSize = 32.sp,
                 fontWeight = FontWeight.Bold
             ),
             softWrap = true
@@ -199,13 +205,25 @@ fun ImageParallaxScroll(
 
         Text(
             text = blog.metaTitle, style = MaterialTheme.typography.body2.copy(
-                fontWeight = FontWeight.ExtraBold
-            )
+                fontWeight = FontWeight.ExtraBold,
+                fontSize = 22.sp
+            ),
+            modifier = Modifier.padding(vertical = 5.dp, horizontal = 12.dp)
         )
 
-        Text(text = blog.content, style = MaterialTheme.typography.body2)
+        Text(
+            text = blog.content, style = MaterialTheme.typography.body2.copy(
+                fontSize = 16.sp
+            ),
+            modifier = Modifier.padding(vertical = 5.dp, horizontal = 12.dp)
+        )
 
-        Text(text = blog.summary, style = MaterialTheme.typography.caption)
+
+        Text(
+            text = blog.summary,
+            style = MaterialTheme.typography.caption,
+            modifier = Modifier.padding(vertical = 5.dp, horizontal = 12.dp)
+        )
 
         Row(
             modifier = Modifier
@@ -214,9 +232,15 @@ fun ImageParallaxScroll(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Row {
-                Icon(imageVector = Icons.Default.CameraEnhance, contentDescription = "Camera Icon")
-                Text(text = blog.authorName)
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.Default.CameraEnhance,
+                    contentDescription = "Camera Icon",
+                    modifier = Modifier.size(18.dp)
+                )
+                Text(text = blog.authorName, modifier = Modifier.padding(start = 4.dp))
             }
 
             IconButton(onClick = {

@@ -33,6 +33,19 @@ class BlogRepository @Inject constructor(
     }
 
     // ==================USERS=====================
+
+    suspend fun logout(): DataOrException<String, Boolean, Exception> {
+        return try {
+            sessionManager.logout()
+            DataOrException(data = "Logged Out Successfully!!")
+        } catch (e: Exception) {
+            e.printStackTrace()
+            DataOrException(e = e)
+        }
+    }
+
+
+
     suspend fun registerUser(
         user: RegisterUser
     ): DataOrException<User, Boolean, Exception> {
@@ -44,7 +57,7 @@ class BlogRepository @Inject constructor(
             return if (result.success) {
                 sessionManager.updateSession(
                     token = result.data!!.token,
-                    name = result.data.user.firstName,
+                    name = result.data.user.firstName + " " + result.data.user.lastName,
                     email = result.data.user.email,
                     imageUrl = result.data.user.imgUrl
                 )
@@ -70,7 +83,7 @@ class BlogRepository @Inject constructor(
             return if (result.success) {
                 sessionManager.updateSession(
                     token = result.data!!.token,
-                    name = result.data.user.firstName,
+                    name = result.data.user.firstName + " " + result.data.user.lastName,
                     email = result.data.user.email,
                     imageUrl = result.data.user.imgUrl
                 )

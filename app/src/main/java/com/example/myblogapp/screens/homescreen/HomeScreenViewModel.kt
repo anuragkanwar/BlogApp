@@ -24,7 +24,7 @@ class HomeScreenViewModel @Inject constructor(
     var loadError = mutableStateOf("")
     var isLoading = mutableStateOf(false)
     var blogList = mutableStateOf<List<MinBlog>>(listOf())
-    var imageUrl = ""
+    var imageUrl = mutableStateOf("")
 
 
     init {
@@ -64,8 +64,8 @@ class HomeScreenViewModel @Inject constructor(
         }
     }
 
-    suspend fun getImage(): String {
-        val imgeurl = ""
+    suspend fun getUserImage() :  String{
+        var imageUrl = ""
         viewModelScope.launch {
             imageUrl = repository.sessionManager.getCurrentImageUrl().toString()
         }.join()

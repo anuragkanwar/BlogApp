@@ -116,8 +116,8 @@ private fun getMonthFull(
 @Composable
 fun DateContent(
     date: Date,
-    color: Color = Color.White,
-    size: Int = 18
+    color: Color = Color.Gray,
+    size: Int = 12
 ) {
     val blogDay = date.toString().split(' ')[0]
     val blogMonth = date.toString().split(' ')[1].lowercase()
@@ -143,7 +143,6 @@ fun BlogCard(
 ) {
 
     val image = blog.imgUrl
-//        "https://cdn.unenvironment.org/s3fs-public/styles/topics_content_promo/public/2021-05/alberta-2297204_1920.jpg?itok=GazAjNLg"
 
     val painter = rememberAsyncImagePainter(
         model = ImageRequest.Builder(LocalContext.current)
@@ -160,7 +159,6 @@ fun BlogCard(
             .height(250.dp)
             .padding(8.dp)
             .clickable {
-                //pass blogId
                 onClick(blog.id)
             },
         shape = RoundedCornerShape(25.dp),

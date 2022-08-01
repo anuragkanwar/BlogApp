@@ -91,7 +91,6 @@ fun CommentScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(top = 28.dp, start = 16.dp, end = 16.dp),
-                reverseLayout = true
             ) {
                 items(comment.size) { Index ->
                     CommentItem(

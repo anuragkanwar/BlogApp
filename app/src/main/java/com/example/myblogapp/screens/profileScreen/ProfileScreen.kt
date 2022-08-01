@@ -12,7 +12,11 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.ArrowRight
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -23,12 +27,16 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Scale
 import coil.size.Size
 import com.example.myblogapp.navigation.BlogScreens
+import com.example.myblogapp.screens.login.LoginScreenViewModel
+import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun ProfileScreen(
@@ -36,10 +44,46 @@ fun ProfileScreen(
     viewModel: ProfileScreenViewModel
 ) {
 
-    val image =
-        "https://cdn.unenvironment.org/s3fs-public/styles/topics_content_promo/public/2021-05/alberta-2297204_1920.jpg?itok=GazAjNLg"
+    val isLoading = remember {
+        mutableStateOf(false)
+    }
+    val scaffoldState = rememberScaffoldState()
+    LaunchedEffect(key1 = true) {
+        viewModel.eventFlow.collectLatest { event ->
+            when (event) {
+                is ProfileScreenViewModel.UiEvent.Loading -> {
+                    isLoading.value = true
+                }
+                is ProfileScreenViewModel.UiEvent.ShowSnackbar -> {
+                    isLoading.value = false
+                    scaffoldState.snackbarHostState.showSnackbar(
+                        message = event.message + "Try again Later"
+                    )
+                }
+                is ProfileScreenViewModel.UiEvent.Success -> {
+                    isLoading.value = false
+                    navController.navigate(BlogScreens.SplashScreen.name) {
+                        popUpTo(navController.graph.findStartDestination().id)
+                        launchSingleTop = true
+                    }
+                }
+            }
+        }
+    }
 
-    val name = "Kelly Sikema"
+
+    var image by remember {
+        mutableStateOf("")
+    }
+
+    var name by remember {
+        mutableStateOf("")
+    }
+    LaunchedEffect(true) {
+        image = viewModel.getUserImage()
+        name = viewModel.getUserName()
+    }
+
 
     val painter = rememberAsyncImagePainter(
         model = ImageRequest.Builder(LocalContext.current)
@@ -105,7 +149,12 @@ fun ProfileScreen(
             color = Color.Red,
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.align(Alignment.CenterHorizontally)
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .clickable {
+                    viewModel.logout()
+                }
+
         )
 
     }
