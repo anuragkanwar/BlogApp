@@ -8,27 +8,27 @@ This is an Blog app which can let any user to read , write and upload blog. User
 ## Screenshots
 
 <p align="center">
-      <img alt="Image" src="https://github.com/anuragkanwar/BlogApp/blob/master/GitAssests/001%20(1).jpg" width="25%" height="33%">
+      <img alt="Image" src="https://raw.githubusercontent.com/anuragkanwar/BlogApp/master/GitAssests/001%20(9).jpg" width="25%" height="33%">
 &nbsp; &nbsp; &nbsp; &nbsp;
-      <img alt="Image" src="https://github.com/anuragkanwar/BlogApp/blob/master/GitAssests/Screenshot_2022-08-01-12-18-36-571_com.example.myblogapp.jpg" width="25%" height="33%">
+      <img alt="Image" src="https://raw.githubusercontent.com/anuragkanwar/BlogApp/master/GitAssests/001%20(1).jpg" width="25%" height="33%">
 &nbsp; &nbsp; &nbsp; &nbsp;
-      <img alt="Image" src="https://github.com/anuragkanwar/BlogApp/blob/master/GitAssests/Screenshot_2022-08-01-12-18-56-006_com.example.myblogapp.jpg" width="25%" height="33%">
+      <img alt="Image" src="https://raw.githubusercontent.com/anuragkanwar/BlogApp/master/GitAssests/001%20(2).jpg" width="25%" height="33%">
   </p>
 
 <p align="center">
-      <img alt="Image" src="https://github.com/anuragkanwar/BlogApp/blob/master/GitAssests/Screenshot_2022-08-01-12-19-03-459_com.example.myblogapp.jpg" width="25%" height="33%">
+      <img alt="Image" src="https://raw.githubusercontent.com/anuragkanwar/BlogApp/master/GitAssests/001%20(3).jpg" width="25%" height="33%">
   &nbsp; &nbsp; &nbsp; &nbsp;
-      <img alt="Image" src="https://github.com/anuragkanwar/BlogApp/blob/master/GitAssests/Screenshot_2022-08-01-12-19-12-804_com.example.myblogapp.jpg" width="25%" height="33%">
+      <img alt="Image" src="https://raw.githubusercontent.com/anuragkanwar/BlogApp/master/GitAssests/001%20(4).jpg" width="25%" height="33%">
   &nbsp; &nbsp; &nbsp; &nbsp;
-      <img alt="Image" src="https://github.com/anuragkanwar/BlogApp/blob/master/GitAssests/Screenshot_2022-08-01-12-19-27-494_com.example.myblogapp.jpg" width="25%" height="33%">
+      <img alt="Image" src="https://raw.githubusercontent.com/anuragkanwar/BlogApp/master/GitAssests/001%20(5).jpg" width="25%" height="33%">
 </p>
 
 <p align="center">
-      <img alt="Image" src="https://github.com/anuragkanwar/BlogApp/blob/master/GitAssests/Screenshot_2022-08-01-12-19-38-190_com.example.myblogapp.jpg" width="25%" height="33%">
+      <img alt="Image" src="https://raw.githubusercontent.com/anuragkanwar/BlogApp/master/GitAssests/001%20(6).jpg" width="25%" height="33%">
   &nbsp; &nbsp; &nbsp; &nbsp;
-      <img alt="Image" src="https://github.com/anuragkanwar/BlogApp/blob/master/GitAssests/Screenshot_2022-08-01-12-19-44-267_com.example.myblogapp.jpg" width="25%" height="33%">
+      <img alt="Image" src="https://raw.githubusercontent.com/anuragkanwar/BlogApp/master/GitAssests/001%20(7).jpg" width="25%" height="33%">
   &nbsp; &nbsp; &nbsp; &nbsp;
-      <img alt="Image" src="https://github.com/anuragkanwar/BlogApp/blob/master/GitAssests/Screenshot_2022-08-01-12-21-33-146_com.example.myblogapp.jpg" width="25%" height="33%">
+      <img alt="Image" src="https://raw.githubusercontent.com/anuragkanwar/BlogApp/master/GitAssests/001%20(8).jpg" width="25%" height="33%">
 </p>
 
 
